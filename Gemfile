@@ -18,6 +18,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem 'devise'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
