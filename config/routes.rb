@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :places, except: [:update, :edit, :destroy]
 
   resources :friendships, only: [:create, :update, :destroy]
+
+  resources :users, only: :index
 end
