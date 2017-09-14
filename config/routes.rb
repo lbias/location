@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'places#index'
 
   resources :places, except: [:update, :edit, :destroy]
+
+  resources :friendships, only: [:create, :update, :destroy]
 end
