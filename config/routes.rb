@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   resources :places, except: [:update, :edit, :destroy]
 
-  resources :users  
+  resources :users do
+    resources :friendships
+  end
 end
