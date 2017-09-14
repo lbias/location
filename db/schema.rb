@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914102734) do
+ActiveRecord::Schema.define(version: 20170914151710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20170914102734) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "place_relationships", force: :cascade do |t|
+    t.integer "place_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_place_relationships_on_place_id"
+    t.index ["user_id"], name: "index_place_relationships_on_user_id"
+  end
+
   create_table "places", force: :cascade do |t|
     t.string "title"
     t.text "address"
@@ -31,6 +40,15 @@ ActiveRecord::Schema.define(version: 20170914102734) do
     t.string "shared_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sharings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_sharings_on_place_id"
+    t.index ["user_id"], name: "index_sharings_on_user_id"
   end
 
   create_table "user_friends", force: :cascade do |t|

@@ -1,0 +1,2 @@
+class PlaceRelationship < ApplicationRecord
+end
