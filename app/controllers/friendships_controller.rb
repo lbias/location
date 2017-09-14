@@ -10,18 +10,18 @@ class FriendshipsController < ApplicationController
   def create
     current_user.friendships.create!(friend_id: @friend.id)
     @friend.friendships.create!(friend_id: current_user.id)
-    redirect_to user_friendships_path(current_user.id), notice: "You and #{content_tag(:strong, @friend.name)} are now friends."
+    redirect_to user_friendships_path(current_user.id), notice: "You added a friend successfully."
   end
 
   def destroy
     @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
-    redirect_to user_friendships_path(current_user.id), notice: "You and #{content_tag(:strong, @friendship.friend.name)} are no longer friends."
+    redirect_to user_friendships_path(current_user.id), notice: "You removed a friend successfully."
   end
 
   def set_friend_and_user
     @friend = User.find(params[:user_id])
   rescue ActiveRecord::RecordNotFound
     redirect_to users_path, alert: 'Something went wrong. Please try again'
-  end  
+  end
 end
