@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'places#index'
 
   resources :places, except: [:update, :edit, :destroy]
+
+  resources :users  
 end
