@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :friendships, class_name: 'UserFriend'
   has_many :friends, class_name: 'User', through: :friendships
+  has_many :place_relationships
+  has_many :received_places, through: :place_relationships
 end

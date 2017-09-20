@@ -1,4 +1,7 @@
 class Place < ApplicationRecord
+  has_many :place_relationships
+  has_many :shared_users, through: :place_relationships
+
   attr_accessor :raw_address
 
   geocoded_by :raw_address
